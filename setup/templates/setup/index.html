@@ -1,0 +1,15 @@
+{% extends 'setup/base.html' %}
+
+{%block content%}
+<p><a href="{% url 'setup:create'  %}">Create new</a>
+
+{% for row in setups%}
+<div>{{row.description}}:<a href="{% url 'setup:detail' row.id %}">Edit</a>
+{% for result in row.target_specs.all %}
+result: {{result.result}}
+{%endfor%}
+</div>
+
+{%endfor%}
+
+{%endblock%}
